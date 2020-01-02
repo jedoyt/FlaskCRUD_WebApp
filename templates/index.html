@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>FlaskWebApp Blogs</title>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron container">
+    <h1 class="display-5">Compose Blog</h1>
+    <div class="form-group">
+        <label for="post_content">Type-in new content</label>
+        <form action="/" method="POST">
+        <div class="card-body">            
+            <textarea class="form-control" name="post_content" id="post_content" rows="2"></textarea>            
+        </div>
+        <div class="card-body">
+            <input class="btn btn-primary" type="submit" value="POST">
+        </div>        
+        </form>
+    </div>
+    <hr class="my-5">
+    <h1 class="display-5">Blogs</h1>
+    {% for blog in blogs %}
+    <div class="card">
+        <h5 class="card-header">{{ blog.timestamp }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ blog.content }}</p>
+          <a href="/updateblog/{{blog.id}}" class="btn btn-primary">Update</a>
+          <a href="/deleteblog/{{blog.id}}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    <hr class="my-4">
+    {% endfor %}    
+</div>
+{% endblock %}

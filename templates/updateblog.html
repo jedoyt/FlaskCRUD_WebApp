@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update Blog Post</title>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron container">
+    <h1 class="display-5">Update Blog Post</h1>
+    <div class="form-group">
+        <label for="post_content">Edit content</label>
+        <form action="/updateblog/{{ blog.id }}" method="POST">
+        <div class="card-body">            
+            <textarea class="form-control" name="post_content" id="post_content" rows="2">{{ blog.content }}:</textarea>            
+        </div>
+        <div class="card-body">
+            <input class="btn btn-primary" type="submit" value=" Update Blog">
+        </div>        
+        </form>
+    </div>
+</div>
+{% endblock %}
